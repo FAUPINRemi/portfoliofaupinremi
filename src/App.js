@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import portfolio from './portfolio';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
-import './script/scriptnavbar.js'; 
+import $ from 'jquery';
 
 gsap.registerPlugin(Draggable);
 
 function App() {
+  const [isDarkMode, setDarkMode] = useState(false);
   const squareRef = useRef(null);
   const squareRef2= useRef(null);
   const squareRef3= useRef(null);
@@ -15,6 +16,19 @@ function App() {
   const squareRef5= useRef(null);
     const containerRef = useRef(null);
 
+
+    function darklight() {
+      setDarkMode((prevMode) => !prevMode);
+      var element = document.body;
+      element.classList.toggle("whitemode");
+      var logo = document.getElementById('imglogo');
+
+      if (logo.src.match("logoportfolioblancsansfond.png")) {
+        logo.src = "./img/logoportfolionoirsansfond.png";
+      } else {
+        logo.src = "./img/logoportfolioblancsansfond.png";
+      }
+    }
   useEffect(() => {
     Draggable.create(squareRef.current, { 
       type: 'x,y', 
@@ -88,16 +102,99 @@ function App() {
         });
       }
     });
-   
+
+  
+    // Déclaration des variables
+    var tempsAvantMasquage = 5000; // 5000 millisecondes = 5 secondes
+    var tempsDeMasquageProgressif = 3000; // 3000 millisecondes = 3 secondes
+    var videoContainer = document.getElementById('video-container');
+    var fullscreenVideo = document.getElementById('fullscreen-video');
+    var startTime;
+
+    // Fonction pour masquer la vidéo progressivement
+    function masquerVideo(timestamp) {
+      if (!startTime) {
+        startTime = timestamp;
+      }
+
+      var progress = timestamp - startTime;
+      var opacity = 1 - Math.min(progress / tempsDeMasquageProgressif, 1);
+
+      fullscreenVideo.style.opacity = opacity;
+
+      if (progress < tempsDeMasquageProgressif) {
+        requestAnimationFrame(masquerVideo);
+      } else {
+        videoContainer.style.display = 'none';
+      }
+    }
+
+    // Afficher la vidéo en plein écran
+    videoContainer.style.display = 'block';
+
+    // Démarrer l'animation après le délai spécifié
+    setTimeout(function () {
+      requestAnimationFrame(masquerVideo);
+    }, tempsAvantMasquage);
+
+    // Gestion du menu de navigation
+    $(document).ready(function () {
+      $(".menu-icon").on("click", function () {
+        $("nav ul").toggleClass("showing");
+      });
+    });
+
+    // Changer la couleur de la barre de navigation en fonction du défilement
+    $(window).on("scroll", function () {
+      if ($(window).scrollTop()) {
+        $('nav').addClass('black');
+      } else {
+        $('nav').removeClass('black');
+      }
+    });
+
+    
+
+    // Ajouter un gestionnaire d'événements aux liens ancrés pour le défilement
+    document.addEventListener("DOMContentLoaded", function () {
+      var links = document.querySelectorAll('a[href^="#"]');
+
+      links.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          var targetId = this.getAttribute("href").substring(1);
+          var targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            var targetPosition = targetElement.offsetTop;
+            var currentPosition = window.scrollY;
+            var distance = targetPosition - currentPosition;
+            var speed = 15;
+
+            function animateScroll() {
+              currentPosition += distance / speed;
+              window.scrollTo(0, currentPosition);
+
+              if (currentPosition < targetPosition) {
+                requestAnimationFrame(animateScroll);
+              }
+            }
+
+            animateScroll();
+          }
+        });
+      });
+    });
+
  
   }, []);
 
  
   return (
     <>
-    <Router>
-
-    <div className="wrapper">
+     <Router>
+        <div className={`wrapper ${isDarkMode ? 'whitemode' : ''}`}>
           <header>
             <nav>
               <div className="menu-icon">
@@ -108,19 +205,17 @@ function App() {
               </div>
               <div className="menu">
                 <ul>
-                  <li></li>
                   <li><Link to="./portfolio">Portfolio</Link></li>
-                  
                 </ul>
-                 <div class="toggleswitch">
-               <label class="switch">
-                <input type="checkbox" onclick="darklight()"></input>
-                <span class="slider"></span>
-              </label>
-            </div>
-            </div>
+                <div className="toggleswitch">
+                  <label className="switch">
+                    <input type="checkbox" onClick={darklight}></input>
+                    <span className="slider"></span>
+                  </label>
+                </div>
+              </div>
             </nav>
-            </header>
+          </header>
             </div>
     <div id="video-container">
       <video id="fullscreen-video" autoPlay muted loop>
@@ -210,6 +305,7 @@ function App() {
 <script src="https://unpkg.com/scrolltrigger-scss@3.7.1/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
     <script type="module" src="/src/draggeblecontainer.jsx"></script>
+ 
         
     </Router>
     </>

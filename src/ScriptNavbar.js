@@ -1,13 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import './App.css'; // Importer votre fichier CSS
+import React, { useEffect } from 'react';
 import $ from 'jquery';
-import 'font-awesome/css/font-awesome.min.css'; // Assurer l'importation des icônes Font Awesome
 
-function Navbar() {
-  const [isDarkMode, setDarkMode] = useState(false);
-
+function ScriptNavbar() {
   useEffect(() => {
+    // Déclaration des variables
+    var tempsAvantMasquage = 5000; // 5000 millisecondes = 5 secondes
+    var tempsDeMasquageProgressif = 3000; // 3000 millisecondes = 3 secondes
+    var videoContainer = document.getElementById('video-container');
+    var fullscreenVideo = document.getElementById('fullscreen-video');
+    var startTime;
+
+    // Fonction pour masquer la vidéo progressivement
+    function masquerVideo(timestamp) {
+      if (!startTime) {
+        startTime = timestamp;
+      }
+
+      var progress = timestamp - startTime;
+      var opacity = 1 - Math.min(progress / tempsDeMasquageProgressif, 1);
+
+      fullscreenVideo.style.opacity = opacity;
+
+      if (progress < tempsDeMasquageProgressif) {
+        requestAnimationFrame(masquerVideo);
+      } else {
+        videoContainer.style.display = 'none';
+      }
+    }
+
+    // Afficher la vidéo en plein écran
+    videoContainer.style.display = 'block';
+
+    // Démarrer l'animation après le délai spécifié
+    setTimeout(function () {
+      requestAnimationFrame(masquerVideo);
+    }, tempsAvantMasquage);
+
     // Gestion du menu de navigation
     $(document).ready(function () {
       $(".menu-icon").on("click", function () {
@@ -26,7 +54,8 @@ function Navbar() {
 
     // Fonction pour basculer entre les modes sombre et clair
     function darklight() {
-      setDarkMode((prevMode) => !prevMode);
+      var element = document.body;
+      element.classList.toggle("whitemode");
       var logo = document.getElementById('imglogo');
 
       if (logo.src.match("logoportfolioblancsansfond.png")) {
@@ -70,33 +99,7 @@ function Navbar() {
 
   }, []); // Le tableau de dépendances vide assure que l'effet ne s'exécute qu'une fois lors du montage
 
-  return (
-    <div className={`wrapper ${isDarkMode ? 'whitemode' : ''}`}>
-      <header>
-        <nav>
-          <div className="menu-icon">
-            <i className="fa fa-bars fa-2x"></i>
-          </div>
-          <div className="logo">
-            <a href="index.html"><img id="imglogo" src="./public/img/logoportfolioblancsansfond.png" alt="logo_RémiFaupin"></img></a>
-          </div>
-          <div className="menu">
-            <ul>
-              <li><a href="#sectionapropos" className="nav-link">A propos</a></li>
-              <li><a href="#">Portoflio</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-            <div className="toggleswitch">
-              <label className="switch">
-                <input type="checkbox" onClick={darklight}></input>
-                <span className="slider"></span>
-              </label>
-            </div>
-          </div>
-        </nav>
-      </header>
-    </div>
-  );
+  return null; // Puisque c'est uniquement pour les effets secondaires, le composant ne rend rien
 }
 
-export default Navbar;
+export default ScriptNavbar;
