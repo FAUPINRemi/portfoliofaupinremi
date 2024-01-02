@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import portfolio from './portfolio';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import $ from 'jquery';
+import Portfolio from './portfolio';
 
 gsap.registerPlugin(Draggable);
 
@@ -103,7 +104,7 @@ function App() {
       }
     });
 
-  
+    
     // Déclaration des variables
     var tempsAvantMasquage = 5000; // 5000 millisecondes = 5 secondes
     var tempsDeMasquageProgressif = 3000; // 3000 millisecondes = 3 secondes
@@ -205,7 +206,7 @@ function App() {
               </div>
               <div className="menu">
                 <ul>
-                  <li><Link to="./portfolio">Portfolio</Link></li>
+                  <li><Link to="/portfolio">Portfolio</Link></li>
                 </ul>
                 <div className="toggleswitch">
                   <label className="switch">
@@ -216,7 +217,10 @@ function App() {
               </div>
             </nav>
           </header>
+        
             </div>
+
+
     <div id="video-container">
       <video id="fullscreen-video" autoPlay muted loop>
           <source src="./video/logo_remifaupin_animation.mp4" type="video/mp4"></source>
@@ -306,7 +310,10 @@ function App() {
 <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
     <script type="module" src="/src/draggeblecontainer.jsx"></script>
  
-        
+    <Routes>
+    <Route path="/portfolio" component={Portfolio} />
+    <Route path="/" component={App} />
+    </Routes>
     </Router>
     </>
   );

@@ -1,13 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import './App.css'; // Importer votre fichier CSS
+import React, { useEffect, useState, useRef } from 'react';
 import $ from 'jquery';
 import 'font-awesome/css/font-awesome.min.css'; // Assurer l'importation des icônes Font Awesome
-
+import './App.css'; // Importer votre fichier CSS
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 function Navbar() {
   const [isDarkMode, setDarkMode] = useState(false);
 
+  // Fonction pour basculer entre les modes sombre et clair
+  function darklight() {
+    setDarkMode((prevMode) => !prevMode);
+    var logo = document.getElementById('imglogo');
+
+    if (logo.src.match("logoportfolioblancsansfond.png")) {
+      logo.src = "./public/img/logoportfolionoirsansfond.png";
+    } else {
+      logo.src = "./public/img/logoportfolioblancsansfond.png";
+    }
+  }
+
   useEffect(() => {
+    console.log("Navbar rendu !");
     // Gestion du menu de navigation
     $(document).ready(function () {
       $(".menu-icon").on("click", function () {
@@ -23,18 +40,6 @@ function Navbar() {
         $('nav').removeClass('black');
       }
     });
-
-    // Fonction pour basculer entre les modes sombre et clair
-    function darklight() {
-      setDarkMode((prevMode) => !prevMode);
-      var logo = document.getElementById('imglogo');
-
-      if (logo.src.match("logoportfolioblancsansfond.png")) {
-        logo.src = "./public/img/logoportfolionoirsansfond.png";
-      } else {
-        logo.src = "./public/img/logoportfolioblancsansfond.png";
-      }
-    }
 
     // Ajouter un gestionnaire d'événements aux liens ancrés pour le défilement
     document.addEventListener("DOMContentLoaded", function () {
@@ -78,13 +83,11 @@ function Navbar() {
             <i className="fa fa-bars fa-2x"></i>
           </div>
           <div className="logo">
-            <a href="index.html"><img id="imglogo" src="./public/img/logoportfolioblancsansfond.png" alt="logo_RémiFaupin"></img></a>
+            <a href="index.html"><img id="imglogo" src="./img/logoportfolioblancsansfond.png" alt="logo_RémiFaupin"></img></a>
           </div>
           <div className="menu">
             <ul>
-              <li><a href="#sectionapropos" className="nav-link">A propos</a></li>
-              <li><a href="#">Portoflio</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><Link to="./portfoliopage.js">Portfolio</Link></li>
             </ul>
             <div className="toggleswitch">
               <label className="switch">
