@@ -231,7 +231,7 @@ function App() {
   <div className="section1">
         
     <div className="titreprincp1" data-aos="fade-up" data-aos-duration="1000">
-    <h1 className="titre1">Rémi</h1>
+    <h1 className="titre1">Rémin</h1>
 </div>
 <div className="titreprincp1" data-aos="fade-up" data-aos-duration="3000">
     <h1 className="titre2">FAUPIN</h1>
