@@ -5,8 +5,11 @@ import { Draggable } from 'gsap/Draggable';
 import $ from 'jquery';
 import Navbar from './Navbar.jsx';
 import { Portfolio, PortfolioAccueil } from './portfolio.jsx'; // Importez Portfolio et PortfolioAccueil depuis le fichier portfolio.jsx
+
 import ScriptNavbar from './ScriptNavbar.js';
 gsap.registerPlugin(Draggable);
+
+
 
 function App() {
   const [isDarkMode, setDarkMode] = useState(false);
@@ -195,8 +198,8 @@ function App() {
   return (
     <>
   
-      
-<script href="./ScriptNavbar.js"></script>
+ 
+  
 
     <div id="video-container">
       <video id="fullscreen-video" autoPlay muted loop>
@@ -288,7 +291,7 @@ function App() {
     <script type="module" src="/src/draggeblecontainer.jsx"></script>
  
     
-  
+    <script src='ScriptNavbar.js'></script>
     </>
   );
 

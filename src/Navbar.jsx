@@ -1,78 +1,82 @@
-import React, { useEffect, useState, useRef } from 'react';
-import $ from 'jquery';
-import 'font-awesome/css/font-awesome.min.css'; // Assurer l'importation des icônes Font Awesome
-import './App.css'; // Importer votre fichier CSS
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './App.css';
+
 function Navbar() {
   const [isDarkMode, setDarkMode] = useState(false);
+  const [logoSrc, setLogoSrc] = useState('./img/logoportfolioblancsansfond.png');
 
-  // Fonction pour basculer entre les modes sombre et clair
   function darklight() {
     setDarkMode((prevMode) => !prevMode);
-    var logo = document.getElementById('imglogo');
 
-    if (logo.src.match("logoportfolioblancsansfond.png")) {
-      logo.src = "./public/img/logoportfolionoirsansfond.png";
+    if (logoSrc === './img/logoportfolioblancsansfond.png') {
+      setLogoSrc('./img/logoportfolionoirsansfond.png');
     } else {
-      logo.src = "./public/img/logoportfolioblancsansfond.png";
+      setLogoSrc('./img/logoportfolioblancsansfond.png');
     }
   }
 
   useEffect(() => {
-    console.log("Navbar rendu !");
+    console.log('Navbar rendu !');
+
     // Gestion du menu de navigation
-    $(document).ready(function () {
-      $(".menu-icon").on("click", function () {
-        $("nav ul").toggleClass("showing");
-      });
-    });
+    const handleMenuClick = () => {
+      const navUl = document.querySelector('nav ul');
+      navUl.classList.toggle('showing');
+    };
+
+    document.querySelector('.menu-icon').addEventListener('click', handleMenuClick);
 
     // Changer la couleur de la barre de navigation en fonction du défilement
-    $(window).on("scroll", function () {
-      if ($(window).scrollTop()) {
-        $('nav').addClass('black');
+    const handleScroll = () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY) {
+        nav.classList.add('black');
       } else {
-        $('nav').removeClass('black');
+        nav.classList.remove('black');
       }
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll);
 
     // Ajouter un gestionnaire d'événements aux liens ancrés pour le défilement
-    document.addEventListener("DOMContentLoaded", function () {
-      var links = document.querySelectorAll('a[href^="#"]');
+    const handleLinkClick = (event) => {
+      event.preventDefault();
 
-      links.forEach(function (link) {
-        link.addEventListener("click", function (event) {
-          event.preventDefault();
+      const targetId = event.currentTarget.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
 
-          var targetId = this.getAttribute("href").substring(1);
-          var targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const targetPosition = targetElement.offsetTop;
+        const currentPosition = window.scrollY;
+        const distance = targetPosition - currentPosition;
+        const speed = 15;
 
-          if (targetElement) {
-            var targetPosition = targetElement.offsetTop;
-            var currentPosition = window.scrollY;
-            var distance = targetPosition - currentPosition;
-            var speed = 15;
+        function animateScroll() {
+          currentPosition += distance / speed;
+          window.scrollTo(0, currentPosition);
 
-            function animateScroll() {
-              currentPosition += distance / speed;
-              window.scrollTo(0, currentPosition);
-
-              if (currentPosition < targetPosition) {
-                requestAnimationFrame(animateScroll);
-              }
-            }
-
-            animateScroll();
+          if (currentPosition < targetPosition) {
+            requestAnimationFrame(animateScroll);
           }
-        });
-      });
+        }
+
+        animateScroll();
+      }
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', handleLinkClick);
     });
 
+    // Cleanup des écouteurs d'événements lors du démontage du composant
+    return () => {
+      document.querySelector('.menu-icon').removeEventListener('click', handleMenuClick);
+      window.removeEventListener('scroll', handleScroll);
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.removeEventListener('click', handleLinkClick);
+      });
+    };
   }, []); // Le tableau de dépendances vide assure que l'effet ne s'exécute qu'une fois lors du montage
 
   return (
@@ -83,19 +87,20 @@ function Navbar() {
             <i className="fa fa-bars fa-2x"></i>
           </div>
           <div className="logo">
-            <a href="index.js"><img id="imglogo" src="./img/logoportfolioblancsansfond.png" alt="logo_RémiFaupin"></img></a>
+            <li>
+              <Link to="/">
+                <a href="index.js">
+                  <img id="imglogo" src={logoSrc} alt="logo_RémiFaupin" />
+                </a>
+              </Link>
+            </li>
           </div>
           <div className="menu">
             <ul>
-            <li><Link to="/">Home</Link></li>
-        <li><Link to="/portfolio">Portfolio</Link></li>
+              <li>
+                <Link to="/portfolio">Portfolio</Link>
+              </li>
             </ul>
-            <div className="toggleswitch">
-              <label className="switch">
-                <input type="checkbox" onClick={darklight}></input>
-                <span className="slider"></span>
-              </label>
-            </div>
           </div>
         </nav>
       </header>

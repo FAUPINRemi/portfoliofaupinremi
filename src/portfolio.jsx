@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar.jsx';
-
+import './portfolio.css';
 
 function PortfolioAccueil() {
   return (
@@ -29,10 +29,16 @@ function Portfolio() {
   }
 
   return (
+    <>
+ 
     <div>
       <h1>Portfolio</h1>
-      {/* Contenu de la page du portfolio */}
+      <figure>
+    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Mountains"></img>
+    <figcaption>Site web Orelsan</figcaption>
+    </figure>
     </div>
+    </>
   );
 }
 
