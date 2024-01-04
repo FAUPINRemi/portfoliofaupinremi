@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import portfolio from './portfolio';
+import { BrowserRouter as Router, Route, Routes, Link, Form } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import $ from 'jquery';
-import Portfolio from './portfolio';
-
+import Navbar from './Navbar.jsx';
+import { Portfolio, PortfolioAccueil } from './portfolio.jsx'; // Importez Portfolio et PortfolioAccueil depuis le fichier portfolio.jsx
+import ScriptNavbar from './ScriptNavbar.js';
 gsap.registerPlugin(Draggable);
 
 function App() {
@@ -194,32 +194,9 @@ function App() {
  
   return (
     <>
-     <Router>
-        <div className={`wrapper ${isDarkMode ? 'whitemode' : ''}`}>
-          <header>
-            <nav>
-              <div className="menu-icon">
-                <i className="fa fa-bars fa-2x"></i>
-              </div>
-              <div className="logo">
-                <a href="index.html"><img id="imglogo" src="./img/logoportfolioblancsansfond.png" alt="logo_RémiFaupin"></img></a>
-              </div>
-              <div className="menu">
-                <ul>
-                  <li><Link to="/portfolio">Portfolio</Link></li>
-                </ul>
-                <div className="toggleswitch">
-                  <label className="switch">
-                    <input type="checkbox" onClick={darklight}></input>
-                    <span className="slider"></span>
-                  </label>
-                </div>
-              </div>
-            </nav>
-          </header>
-        
-            </div>
-
+  
+      
+<script href="./ScriptNavbar.js"></script>
 
     <div id="video-container">
       <video id="fullscreen-video" autoPlay muted loop>
@@ -227,8 +204,8 @@ function App() {
           Your browser does not support the video tag.
       </video>
   </div>
-  
-  <div className="section1">
+   <Navbar></Navbar>
+
         
     <div className="titreprincp1" data-aos="fade-up" data-aos-duration="1000">
     <h1 className="titre1">Rémin</h1>
@@ -242,7 +219,7 @@ function App() {
 <div className="titreprincp1" data-aos="fade-up" data-aos-duration="1000">
   <h1 className="titre4">Métiers du Multimédia et de l'Internet</h1>
 </div>
-</div>
+
 <div className="rond" style={{ width: '40.563em', height: '40.563em', flexShrink: 0 }} ></div>
 <div className="titreS"><h3 className="titresommaire">Sommaire</h3></div>
 <div className="sommaire">
@@ -310,11 +287,8 @@ function App() {
 <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
     <script type="module" src="/src/draggeblecontainer.jsx"></script>
  
-    <Routes>
-    <Route path="/portfolio" component={Portfolio} />
-    <Route path="/" component={App} />
-    </Routes>
-    </Router>
+    
+  
     </>
   );
 

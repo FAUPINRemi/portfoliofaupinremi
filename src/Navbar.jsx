@@ -83,11 +83,12 @@ function Navbar() {
             <i className="fa fa-bars fa-2x"></i>
           </div>
           <div className="logo">
-            <a href="index.html"><img id="imglogo" src="./img/logoportfolioblancsansfond.png" alt="logo_RémiFaupin"></img></a>
+            <a href="index.js"><img id="imglogo" src="./img/logoportfolioblancsansfond.png" alt="logo_RémiFaupin"></img></a>
           </div>
           <div className="menu">
             <ul>
-              <li><Link to="./portfoliopage.js">Portfolio</Link></li>
+            <li><Link to="/">Home</Link></li>
+        <li><Link to="/portfolio">Portfolio</Link></li>
             </ul>
             <div className="toggleswitch">
               <label className="switch">

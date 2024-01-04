@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Navbar from './Navbar';
-function Portfolio() {
+import Navbar from './Navbar.jsx';
+
+
+function PortfolioAccueil() {
   return (
     <div>
       <Navbar></Navbar>
@@ -11,7 +12,7 @@ function Portfolio() {
   );
 }
 
-function App() {
+function Portfolio() {
   const [isDarkMode, setDarkMode] = useState(false);
 
   function darklight() {
@@ -27,6 +28,12 @@ function App() {
     }
   }
 
+  return (
+    <div>
+      <h1>Portfolio</h1>
+      {/* Contenu de la page du portfolio */}
+    </div>
+  );
 }
 
-export default Portfolio;
+export { PortfolioAccueil, Portfolio };
