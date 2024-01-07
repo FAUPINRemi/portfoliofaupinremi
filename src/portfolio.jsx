@@ -36,11 +36,11 @@ function Portfolio() {
       <h1 className='titreportfolio'>Portfolio</h1>
       <div className='divcontainerportfolio'>
       <figure>
-    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Mountains"></img>
+    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Siteweborelsan"></img>
     <figcaption>Site web Orelsan</figcaption>
     </figure>
     <figure>
-    <img className='imgorelsite' src="./img/acf2lsite.png" alt="Mountains"></img>
+    <img className='imgorelsite' src="./img/acf2lsite.png" alt="Sitewebacf2l"></img>
     <figcaption>Site web ACF2L</figcaption>
     </figure>
     <figure>
