@@ -290,8 +290,7 @@ function App() {
 <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
     <script type="module" src="/src/draggeblecontainer.jsx"></script>
  
-    
-    <script src='ScriptNavbar.js'></script>
+
     </>
   );
 

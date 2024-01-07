@@ -5,8 +5,8 @@ import './portfolio.css';
 function PortfolioAccueil() {
   return (
     <div>
-      <Navbar></Navbar>
-      <h1>Accueil</h1>
+    
+     
       {/* Contenu de la page d'accueil */}
     </div>
   );
@@ -30,13 +30,24 @@ function Portfolio() {
 
   return (
     <>
- 
+   <Navbar></Navbar>
+   <br></br>
     <div>
-      <h1>Portfolio</h1>
+      <h1 className='titreportfolio'>Portfolio</h1>
+      <div className='divcontainerportfolio'>
       <figure>
     <img className='imgorelsite' src="./img/siteorelsan.png" alt="Mountains"></img>
     <figcaption>Site web Orelsan</figcaption>
     </figure>
+    <figure>
+    <img className='imgorelsite' src="./img/acf2lsite.png" alt="Mountains"></img>
+    <figcaption>Site web ACF2L</figcaption>
+    </figure>
+    <figure>
+    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Mountains"></img>
+    <figcaption>Site web Orelsan</figcaption>
+    </figure>
+    </div>
     </div>
     </>
   );
