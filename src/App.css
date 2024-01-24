@@ -47,6 +47,22 @@ html{
   }
 
 
+  @media (max-width: 768px) {
+    .textcontainer{
+      font-size: 50px;
+      padding-top: 155px;
+      padding-left: 22px;
+    }
+  
+    #root{
+      margin-top: -227.5px;
+    }
+  
+    .textcard{
+      font-size: 16px;
+    }
+  }
+
 @font-face {
   font-family: 'Gilmer';
   src: url('./font/Gilmer-Heavy.woff2') format('woff2'),
@@ -703,4 +719,138 @@ footer{
 .inconrsimg{
   width: 50px;
   height: auto;
+}
+
+
+@media (max-width: 768px) {
+  .titresommaire{
+    font-size: 90px;
+    padding-top: 20px;
+    margin-bottom: -58px;
+  }
+
+  .titreDev{
+    margin-top: 400px;
+  }
+
+  .titrecardsom{
+    font-size: 30px;
+    padding-top: 25px;
+  }
+
+  .lignesom{
+    padding-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .soustitrecardsom, .soustitrecardsom2{
+    font-size: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .petitT, .petitT2{
+    font-size: 50px;
+    margin-top: 260px;
+    padding-top: 25px;
+    padding-left: 82.5px;
+    margin-bottom: -238px;
+  }
+
+  .conteneur-logo {
+    margin-top:-300px ;
+  }
+
+  .iconlogi {
+    width: 30px;
+    margin-left: 50px;
+  }
+
+  footer{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 150px;
+  }
+
+  .inconrsimg{
+    width: 25px;
+  }
+}
+
+/* Existing CSS code */
+
+/* ... */
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .titre1, .titre2, .titre3, .titre4 {
+    font-size: 100px;
+    margin-left: 0;
+    padding-top: 350px;
+  }
+
+  .section1 {
+    padding-top: 100px;
+    margin-top: 100px;
+    margin-bottom: 150px;
+  }
+
+  .titreprincp1, .titreprincp2 {
+    margin-top: 23.5px;
+    margin-left: 112px;
+  }
+
+  .titre1about, .paragrapheabout {
+    font-size: 50px;
+    margin-left: 389.5px;
+    width: 307.5px;
+    height: 118px;
+  }
+
+  .titre1about {
+    font-size: 50px;
+    margin-left: 20px;
+  }
+
+  .imgaboutme {
+    width: 243px;
+    height: 243px;
+
+    margin-top: 166px;
+    margin-bottom: -250px;
+  }
+
+  #sectionapropos {
+    margin-bottom: -72px;
+  }
+
+  .rond, .rond2 {
+    border-radius: 324.5px;
+    margin-top: -314px;
+    margin-left: -245px;
+    margin-right: -294.5px;
+  }
+
+  .cardsommaire {
+    width: 193.5px;
+    height: 290.5px;
+    top: 3000px;
+  }
+
+  .sommaire {
+    margin-top: 25px;
+  }
+
+  .paragrapheabout {
+    font-size: 18px;
+    width: 100%;
+    left: 0%;
+    
+  }
+}
+
+@media (max-width: 480px) {
+  .paragrapheabout {
+    font-size: 14px;
+  }
 }

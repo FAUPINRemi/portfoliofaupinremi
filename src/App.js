@@ -108,54 +108,65 @@ function App() {
     });
 
     
-    // Déclaration des variables
-    var tempsAvantMasquage = 5000; // 5000 millisecondes = 5 secondes
-    var tempsDeMasquageProgressif = 3000; // 3000 millisecondes = 3 secondes
-    var videoContainer = document.getElementById('video-container');
-    var fullscreenVideo = document.getElementById('fullscreen-video');
-    var startTime;
+   // Déclaration des variables
+var tempsAvantMasquage = 5000; // 5000 millisecondes = 5 secondes
+var tempsDeMasquageProgressif = 3000; // 3000 millisecondes = 3 secondes
+var videoContainer = document.getElementById('video-container');
+var fullscreenVideo = document.getElementById('fullscreen-video');
+var startTime;
 
-    // Fonction pour masquer la vidéo progressivement
-    function masquerVideo(timestamp) {
-      if (!startTime) {
-        startTime = timestamp;
-      }
+// Fonction pour masquer la vidéo progressivement
+function masquerVideo(timestamp) {
+  if (!startTime) {
+    startTime = timestamp;
+  }
 
-      var progress = timestamp - startTime;
-      var opacity = 1 - Math.min(progress / tempsDeMasquageProgressif, 1);
+  var progress = timestamp - startTime;
+  var opacity = 1 - Math.min(progress / tempsDeMasquageProgressif, 1);
 
-      fullscreenVideo.style.opacity = opacity;
+  fullscreenVideo.style.opacity = opacity;
 
-      if (progress < tempsDeMasquageProgressif) {
-        requestAnimationFrame(masquerVideo);
-      } else {
-        videoContainer.style.display = 'none';
-      }
-    }
+  if (progress < tempsDeMasquageProgressif) {
+    requestAnimationFrame(masquerVideo);
+  } else {
+    videoContainer.style.display = 'none';
+  }
+}
 
-    // Afficher la vidéo en plein écran
-    videoContainer.style.display = 'block';
+// Check if the video has been played before
+if (!localStorage.getItem('videoPlayed')) {
+  // Afficher la vidéo en plein écran
+  videoContainer.style.display = 'block';
 
-    // Démarrer l'animation après le délai spécifié
-    setTimeout(function () {
-      requestAnimationFrame(masquerVideo);
-    }, tempsAvantMasquage);
+  // Démarrer l'animation après le délai spécifié
+  setTimeout(function () {
+    requestAnimationFrame(masquerVideo);
+  }, tempsAvantMasquage);
 
-    // Gestion du menu de navigation
-    $(document).ready(function () {
-      $(".menu-icon").on("click", function () {
-        $("nav ul").toggleClass("showing");
-      });
-    });
+  // Set the flag in localStorage
+  localStorage.setItem('videoPlayed', 'true');
+}
 
-    // Changer la couleur de la barre de navigation en fonction du défilement
-    $(window).on("scroll", function () {
-      if ($(window).scrollTop()) {
-        $('nav').addClass('black');
-      } else {
-        $('nav').removeClass('black');
-      }
-    });
+// Clear the localStorage when the page is closed
+window.onunload = function() {
+  localStorage.removeItem('videoPlayed');
+};
+
+// Gestion du menu de navigation
+$(document).ready(function () {
+  $(".menu-icon").on("click", function () {
+    $("nav ul").toggleClass("showing");
+  });
+});
+
+// Changer la couleur de la barre de navigation en fonction du défilement
+$(window).on("scroll", function () {
+  if ($(window).scrollTop()) {
+    $('nav').addClass('black');
+  } else {
+    $('nav').removeClass('black');
+  }
+});
 
     
 
