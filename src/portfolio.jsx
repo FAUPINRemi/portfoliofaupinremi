@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import Bganimate from './BGanimate.jsx';
 import Navbar from './Navbar.jsx';
 import './portfolio.css';
+import Footer from './Footer.jsx';
 
 function PortfolioAccueil() {
   return (
@@ -11,6 +13,7 @@ function PortfolioAccueil() {
     </div>
   );
 }
+
 
 function Portfolio() {
   const [isDarkMode, setDarkMode] = useState(false);
@@ -30,10 +33,11 @@ function Portfolio() {
 
   return (
     <>
+    <Bganimate></Bganimate>
    <Navbar></Navbar>
    <br></br>
     <div>
-      <h1 className='titreportfolio'>Portfolio</h1>
+      <h1 className='titreportfolio'data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Portfolio</h1>
       <div className='divcontainerportfolio'>
       <figure>
     <img className='imgorelsite' src="./img/siteorelsan.png" alt="Siteweborelsan"></img>
@@ -49,6 +53,13 @@ function Portfolio() {
     </figure>
     </div>
     </div>
+
+    <Footer></Footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+  AOS.init();
+</script>
     </>
   );
 }

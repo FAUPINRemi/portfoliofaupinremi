@@ -5,8 +5,9 @@ import { Draggable } from 'gsap/Draggable';
 import $ from 'jquery';
 import Navbar from './Navbar.jsx';
 import { Portfolio, PortfolioAccueil } from './portfolio.jsx'; // Importez Portfolio et PortfolioAccueil depuis le fichier portfolio.jsx
-
+import Footer from './Footer.jsx';
 import ScriptNavbar from './ScriptNavbar.js';
+import Bganimate from './BGanimate.jsx';
 gsap.registerPlugin(Draggable);
 
 
@@ -208,7 +209,7 @@ $(window).on("scroll", function () {
  
   return (
     <>
-  
+  <Bganimate></Bganimate>
  
   
 
@@ -280,16 +281,7 @@ $(window).on("scroll", function () {
   <img src="./img/iconillustrator.png" alt="Logo" className="iconlogi" id="iconlogi"></img>
   <img src="./img/Visual_Studio_Code_1.35_icon.svg.png" alt="Logo" className="iconlogi" id="iconlogi"></img>
 </div>
-<footer>
-<div className="txtcopy">
-<p>Site conçu et réalisé par Rémi FAUPIN</p>
-<p className="toutdroit">© Tous droit réservé - 2023</p>
-<div className="iconrs">
-  <img className="inconrsimg" src="./img/icongithubblanc.png" alt="github"></img>
-  <img className="inconrsimg" src="./img/linkedinblanc.png" alt="linkedin"></img>
-</div>
-</div>
-</footer>
+<Footer></Footer>
 <script>
   AOS.init();
 </script>
