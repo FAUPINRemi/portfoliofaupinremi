@@ -38,6 +38,7 @@ function Portfolio() {
    <br></br>
     <div>
       <h1 className='titreportfolio'data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Portfolio</h1>
+      <h1 className='titreportfolio'>Projets Web</h1>
       <div className='divcontainerportfolio'>
       <figure>
     <img className='imgorelsite' src="./img/siteorelsan.png" alt="Siteweborelsan"></img>

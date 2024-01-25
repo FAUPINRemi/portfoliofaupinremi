@@ -239,7 +239,7 @@ $(window).on("scroll", function () {
 <div className="titreS"><h3 className="titresommaire">Sommaire</h3></div>
 <div className="sommaire">
   <div className="cardsommaire" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"><div className="contentcardsom" ><h4 className="titrecardsom">A propos</h4><h4 className="lignesom">_______________________</h4><h5 className="soustitrecardsom">Qui suis-je ?</h5><h5 className="soustitrecardsom">Mes compétences</h5></div></div>
-  <div className="cardsommaire" data-aos="fade-up" data-aos-duration="1000"><div className="contentcardsom"><h4 className="titrecardsom">Portfolio</h4><h4 className="lignesom">_______________________</h4><h5 className="soustitrecardsom">Projets universitaires</h5><h5 className="soustitrecardsom">Projets perso</h5></div></div>
+  <div className="cardsommaire" data-aos="fade-up" data-aos-duration="1000"><div className="contentcardsom"><h4 className="titrecardsom">Portfolio</h4><h4 className="lignesom">_______________________</h4><h5 className="soustitrecardsom2">Projets Web</h5><h5 className="soustitrecardsom2">Projets 3D</h5><h5 className="soustitrecardsom2">Projets Design</h5></div></div>
   <div className="cardsommaire" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"><div className="contentcardsom"><h4 className="titrecardsom">A propos</h4><h4 className="lignesom">_______________________</h4><h5 className="soustitrecardsom2">Telephone</h5><h5 className="soustitrecardsom2">Email</h5><h5 className="soustitrecardsom2">GitHub</h5><h5 className="soustitrecardsom2">Linkedln</h5></div></div>
   
 </div>
@@ -270,7 +270,6 @@ $(window).on("scroll", function () {
         <p className='textcard'>gsap</p>
         </div>
     </div><div>
-  <p>Attrape les carrés</p>
 </div></div>
 <div className="petitT2"><h3>Logiciels maitrisés :</h3></div>
 <div className="rond2" style={{ width: '40.563em', height: '40.563em', flexShrink: 0 }} ></div>
