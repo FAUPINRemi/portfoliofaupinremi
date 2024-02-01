@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Bganimate from './BGanimate.jsx';
 import Navbar from './Navbar.jsx';
-import './portfolio.css';
+import './contact.css';
 import Footer from './Footer.jsx';
 
 
 
-function Portfolio() {
+function Contact() {
   const [isDarkMode, setDarkMode] = useState(false);
 
   function darklight() {
@@ -28,22 +28,13 @@ function Portfolio() {
    <Navbar></Navbar>
 
     <div>
-      <h1 className='titreportfolio'data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Portfolio</h1>
-      <h1 className='titreportfolio'>Projets Web</h1>
-      <div className='divcontainerportfolio'>
-      <figure>
-    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Siteweborelsan"></img>
-    <figcaption>Site web Orelsan</figcaption>
-    </figure>
-    <figure>
-    <img className='imgorelsite' src="./img/acf2lsite.png" alt="Sitewebacf2l"></img>
-    <figcaption>Site web ACF2L</figcaption>
-    </figure>
-    <figure>
-    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Mountains"></img>
-    <figcaption>Site web Orelsan</figcaption>
-    </figure>
-    </div>
+      <h1 className='titreportfolio'data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Me contacter</h1>
+      <div className='container'>
+        <div className='divcontact'>
+           <img className='logoinfo' src='./img/linkedinblanc.png' alt='logo_linkDin'></img>
+           <a className='link'><p>Rémi Faupin</p></a>
+        </div>
+      </div>
     </div>
 
     <Footer></Footer>
@@ -56,4 +47,4 @@ function Portfolio() {
   );
 }
 
-export {Portfolio };
+export { Contact};

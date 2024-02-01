@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Form } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import $ from 'jquery';
 import Navbar from './Navbar.jsx';
-import { Portfolio, PortfolioAccueil } from './portfolio.jsx'; // Importez Portfolio et PortfolioAccueil depuis le fichier portfolio.jsx
 import Footer from './Footer.jsx';
 import ScriptNavbar from './ScriptNavbar.js';
 import Bganimate from './BGanimate.jsx';
