@@ -19,6 +19,8 @@ function App() {
   const squareRef3= useRef(null);
   const squareRef4= useRef(null);
   const squareRef5= useRef(null);
+  const squareRef6= useRef(null);
+  const squareRef7= useRef(null);
     const containerRef = useRef(null);
 
 
@@ -108,7 +110,31 @@ function App() {
       }
     });
 
-    
+    Draggable.create(squareRef6.current, { 
+      type: 'x,y', 
+      bounds: containerRef.current,
+      onDragEnd: function() {
+        gsap.to(squareRef6.current, { 
+          x: "+=" + this.xVelocity * 30, 
+          y: "+=" + this.yVelocity * 30,
+          duration: 6, 
+        
+        });
+      }
+    });
+
+    Draggable.create(squareRef7.current, { 
+      type: 'x,y', 
+      bounds: containerRef.current,
+      onDragEnd: function() {
+        gsap.to(squareRef7.current, { 
+          x: "+=" + this.xVelocity * 30, 
+          y: "+=" + this.yVelocity * 30,
+          duration: 6, 
+        
+        });
+      }
+    });
    // Déclaration des variables
 var tempsAvantMasquage = 5000; // 5000 millisecondes = 5 secondes
 var tempsDeMasquageProgressif = 3000; // 3000 millisecondes = 3 secondes
@@ -269,6 +295,12 @@ $(window).on("scroll", function () {
         <div ref={squareRef5} className='cardcontainer' style={{ width: '200px',height: '200px',background: 'rgba( 82, 81, 81, 0.5 )',boxShadow:' 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',backdropFilter: 'blur( 13.5px )',borderRadius: '10px',border:' 1px solid rgba( 255, 255, 255, 0.18 )', textAlign:'center',justifyContent:'center', display:'flex',alignItems:'center',}}>
         <p className='textcard'>gsap</p>
         </div>
+        <div ref={squareRef6} className='cardcontainer' style={{ width: '200px',height: '200px',background: 'rgba( 82, 81, 81, 0.5 )',boxShadow:' 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',backdropFilter: 'blur( 13.5px )',borderRadius: '10px',border:' 1px solid rgba( 255, 255, 255, 0.18 )', textAlign:'center',justifyContent:'center', display:'flex',alignItems:'center',}}>
+        <p className='textcard'>angular</p>
+        </div>
+        <div ref={squareRef7} className='cardcontainer' style={{ width: '200px',height: '200px',background: 'rgba( 82, 81, 81, 0.5 )',boxShadow:' 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )',backdropFilter: 'blur( 13.5px )',borderRadius: '10px',border:' 1px solid rgba( 255, 255, 255, 0.18 )', textAlign:'center',justifyContent:'center', display:'flex',alignItems:'center',}}>
+        <p className='textcard'>threejs / webGL</p>
+        </div>
     </div><div>
 </div></div>
 <div className="petitT2"><h3>Logiciels maitrisés :</h3></div>
@@ -280,6 +312,14 @@ $(window).on("scroll", function () {
   <img src="./img/iconillustrator.png" alt="Logo" className="iconlogi" id="iconlogi"></img>
   <img src="./img/Visual_Studio_Code_1.35_icon.svg.png" alt="Logo" className="iconlogi" id="iconlogi"></img>
 </div>
+
+
+
+
+
+
+
+
 <Footer></Footer>
 <script>
   AOS.init();
