@@ -10,6 +10,7 @@ import { Portfolio} from './portfolio.jsx'; // Importez Portfolio et PortfolioAc
 import { Contact } from './contact.jsx';
 import { Orelsan } from './orelsan.jsx';
 import { WebdocBH } from './Webdoc.jsx';
+import { Aviationapi } from './aviation.jsx';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="/contact" element={<Contact />} />
         <Route path="/orelsan" element={<Orelsan />} />
         <Route path="/webdocBrieHappy" element={<WebdocBH />} />
+        <Route path="/aviationtp" element={<Aviationapi />} />
       </Routes>
     </Router>
   </React.StrictMode>,
