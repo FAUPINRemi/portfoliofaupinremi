@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Portfolio} from './portfolio.jsx'; // Importez Portfolio et PortfolioAccueil depuis le fichier port'folio.jsx
 import { Contact } from './contact.jsx';
 import { Orelsan } from './orelsan.jsx';
+import { WebdocBH } from './Webdoc.jsx';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/orelsan" element={<Orelsan />} />
+        <Route path="/webdocBrieHappy" element={<WebdocBH />} />
       </Routes>
     </Router>
   </React.StrictMode>,
