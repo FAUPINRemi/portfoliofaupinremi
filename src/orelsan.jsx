@@ -3,10 +3,10 @@ import Bganimate from './BGanimate.jsx';
 import Navbar from './Navbar.jsx';
 import './portfolio.css';
 import Footer from './Footer.jsx';
-import { Link } from 'react-router-dom';
 
 
-function Portfolio() {
+
+function Orelsan() {
   const [isDarkMode, setDarkMode] = useState(false);
 
   function darklight() {
@@ -26,26 +26,17 @@ function Portfolio() {
     <>
     <Bganimate></Bganimate>
    <Navbar></Navbar>
-   
+
     <div>
-      <h1 className='titreportfolio'data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Portfolio</h1>
-      <h1 className='titreportfolio'>Projets Web</h1>
-      <div className='divcontainerportfolio'>
-      <div><Link to="/orelsan"> <figure>
-    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Siteweborelsan"></img>
-  <figcaption>Site web Orelsan</figcaption>
-    </figure></Link></div> 
-    <figure>
-    <img className='imgorelsite' src="./img/acf2lsite.png" alt="Sitewebacf2l"></img>
-    <figcaption>Site web ACF2L</figcaption>
-    </figure>
-    <figure>
-    <img className='imgorelsite' src="./img/siteorelsan.png" alt="Mountains"></img>
-    <figcaption>Site web Orelsan</figcaption>
-    </figure>
+      <h1 className='titreportfolio2'>Site web sur l'artiste Orelsan</h1>
+      
+      <div className='iframeweb'>
+      <iframe src="https://remiforelsanwebsite.000webhostapp.com" width="80%" height="700"></iframe>
     </div>
+    <p className='desciptioniframe'>Site web développpé en 2022 dans le cardre d'un projet de fin de semestre (Premier semestre). <br />Techno utilisé : HTML5 / CSS3 / Python</p>
     </div>
 
+   <div className='buttondiv'> <a href="https://remiforelsanwebsite.000webhostapp.com" target="_blank"><button className='buttoniframe'>Voir le site</button></a></div>
     <Footer></Footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -56,4 +47,4 @@ function Portfolio() {
   );
 }
 
-export {Portfolio };
+export {Orelsan };
